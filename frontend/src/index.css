@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-teal:       hsl(175 70% 36%);
+  --color-teal-deep:  hsl(175 70% 26%);
+  --color-paper:      hsl(200 20% 97%);
+  --color-ink:        hsl(220 20% 15%);
+  --color-mist:       hsl(210 20% 88%);
+  --color-accent:     hsl(258 75% 55%);
+
+  /* Severity */
+  --color-critical:   hsl(0 75% 50%);
+  --color-serious:    hsl(28 90% 48%);
+  --color-moderate:   hsl(44 90% 44%);
+  --color-minor:      hsl(130 55% 38%);
+
+  /* Typography */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ─── Global Reset ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes pulse-bar {
+  0%, 100% { transform: translateX(-100%); }
+  50%       { transform: translateX(100%); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Utility Animations ─────────────────────────────────────── */
+.animate-rise {
+  animation: rise 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-pulse-bar {
+  animation: pulse-bar 1.6s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ─── Tailwind Variant Overrides ─────────────────────────────── */
+/* These are utility values not in TW4 defaults that our components reference */
+
+/* Opacity shortcuts used in JSX */
+.bg-critical\/8   { background-color: color-mix(in oklab, var(--color-critical) 8%, transparent); }
+.bg-serious\/8    { background-color: color-mix(in oklab, var(--color-serious) 8%, transparent); }
+.bg-moderate\/8   { background-color: color-mix(in oklab, var(--color-moderate) 8%, transparent); }
+.bg-minor\/8      { background-color: color-mix(in oklab, var(--color-minor) 8%, transparent); }
+.bg-teal\/5       { background-color: color-mix(in oklab, var(--color-teal) 5%, transparent); }
+.bg-teal\/8       { background-color: color-mix(in oklab, var(--color-teal) 8%, transparent); }
+.bg-paper\/60     { background-color: color-mix(in oklab, var(--color-paper) 60%, transparent); }
+.bg-paper\/70     { background-color: color-mix(in oklab, var(--color-paper) 70%, transparent); }
+.bg-paper\/80     { background-color: color-mix(in oklab, var(--color-paper) 80%, transparent); }
+.bg-paper\/85     { background-color: color-mix(in oklab, var(--color-paper) 85%, transparent); }
+.bg-mist\/40      { background-color: color-mix(in oklab, var(--color-mist) 40%, transparent); }
+
+.border-critical\/30 { border-color: color-mix(in oklab, var(--color-critical) 30%, transparent); }
+.border-serious\/30  { border-color: color-mix(in oklab, var(--color-serious) 30%, transparent); }
+.border-moderate\/30 { border-color: color-mix(in oklab, var(--color-moderate) 30%, transparent); }
+.border-minor\/30    { border-color: color-mix(in oklab, var(--color-minor) 30%, transparent); }
+.border-teal\/15     { border-color: color-mix(in oklab, var(--color-teal) 15%, transparent); }
+.border-teal\/20     { border-color: color-mix(in oklab, var(--color-teal) 20%, transparent); }
+.border-teal\/30     { border-color: color-mix(in oklab, var(--color-teal) 30%, transparent); }
+
+.text-critical  { color: var(--color-critical); }
+.text-serious   { color: var(--color-serious); }
+.text-moderate  { color: var(--color-moderate); }
+.text-minor     { color: var(--color-minor); }
+.text-teal      { color: var(--color-teal); }
+.text-teal-deep { color: var(--color-teal-deep); }
+.text-ink       { color: var(--color-ink); }
+.text-mist      { color: var(--color-mist); }
+.text-paper     { color: var(--color-paper); }
+.text-accent    { color: var(--color-accent); }
+
+.text-ink\/45   { color: color-mix(in oklab, var(--color-ink) 45%, transparent); }
+.text-ink\/50   { color: color-mix(in oklab, var(--color-ink) 50%, transparent); }
+.text-ink\/55   { color: color-mix(in oklab, var(--color-ink) 55%, transparent); }
+.text-ink\/60   { color: color-mix(in oklab, var(--color-ink) 60%, transparent); }
+.text-ink\/65   { color: color-mix(in oklab, var(--color-ink) 65%, transparent); }
+.text-ink\/70   { color: color-mix(in oklab, var(--color-ink) 70%, transparent); }
+.text-ink\/80   { color: color-mix(in oklab, var(--color-ink) 80%, transparent); }
+
+.bg-teal        { background-color: var(--color-teal); }
+.bg-teal-deep   { background-color: var(--color-teal-deep); }
+.bg-accent      { background-color: var(--color-accent); }
+.bg-paper       { background-color: var(--color-paper); }
+.bg-ink         { background-color: var(--color-ink); }
+.bg-mist        { background-color: var(--color-mist); }
+
+.border-mist    { border-color: var(--color-mist); }
+.border-teal    { border-color: var(--color-teal); }
+
+.hover\:bg-teal:hover      { background-color: var(--color-teal); }
+.hover\:bg-teal-deep:hover { background-color: var(--color-teal-deep); }
+.hover\:text-ink:hover     { color: var(--color-ink); }
+.hover\:text-teal:hover    { color: var(--color-teal); }
+.hover\:bg-teal\/5:hover   { background-color: color-mix(in oklab, var(--color-teal) 5%, transparent); }
+
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* ─── Custom Prose Enhancements ──────────────────────────────── */
+pre, code {
+  font-family: var(--font-mono);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-mist); border-radius: 3px; }
