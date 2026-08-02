@@ -62,8 +62,26 @@ export interface ExplainedScanResult extends ScanResult {
 }
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+  : ['http://localhost:5173', 'http://localhost:8080'];
+
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      // Allow server-to-server (no origin) or matching origins
+      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+        cb(null, true);
+      } else {
+        cb(new Error(`CORS: origin "${origin}" not allowed`));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: '32kb' }));
+
 
 app.get('/health', (_req, res) => {
   res.json({
