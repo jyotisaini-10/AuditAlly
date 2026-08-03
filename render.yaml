@@ -1,0 +1,43 @@
+services:
+  # ── Backend API ──────────────────────────────────────────────
+  - type: web
+    name: auditally-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false          # set manually in Render dashboard
+      - key: REDIS_URI
+        sync: false          # set manually (Upstash URL)
+      - key: JWT_SECRET
+        generateValue: true  # Render auto-generates a secure secret
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: AUDITALLY_LLM_MOCK
+        value: "0"
+      - key: SCAN_CACHE_TTL_SECONDS
+        value: "3600"
+      - key: SCAN_CACHE_DISABLED
+        value: "0"
+      - key: EXPLAIN_CACHE_TTL_SECONDS
+        value: "604800"
+      - key: RATE_LIMIT_MAX_SCANS
+        value: "20"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "3600"
+      - key: GROQ_INPUT_COST_PER_1M
+        value: "0.59"
+      - key: GROQ_OUTPUT_COST_PER_1M
+        value: "0.79"
+      - key: CORS_ORIGIN
+        sync: false          # set to your Vercel URL after deploying frontend
+      - key: PUBLIC_URL
+        sync: false          # set to your Render service URL
