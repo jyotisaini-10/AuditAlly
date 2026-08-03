@@ -8,7 +8,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen">
       <header className="border-b border-teal/15 bg-paper/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
-          <Link to="/" className="group">
+          <Link to="/" className="group flex items-center gap-2.5">
+            {/* Logo mark */}
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal shadow-sm transition group-hover:bg-teal-deep">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" className="h-5 w-5">
+                <circle cx="28" cy="28" r="14" fill="none" stroke="white" strokeWidth="5"/>
+                <line x1="38" y1="38" x2="52" y2="52" stroke="white" strokeWidth="6" strokeLinecap="round"/>
+                <text x="28" y="34" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="18" fill="white">A</text>
+              </svg>
+            </span>
+            {/* Wordmark */}
             <span className="font-display text-2xl font-bold tracking-tight text-teal-deep transition group-hover:text-teal">
               AuditAlly
             </span>

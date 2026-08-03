@@ -292,11 +292,21 @@ export function ScanPage() {
 
       <section className="animate-rise max-w-2xl">
 
-        <p className="text-sm font-medium uppercase tracking-[0.14em] text-teal">
+        <div className="flex items-center gap-3 mb-2">
+          {/* Hero logo mark */}
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal shadow-lg shadow-teal/25">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" className="h-8 w-8">
+              <circle cx="28" cy="28" r="14" fill="none" stroke="white" strokeWidth="5"/>
+              <line x1="38" y1="38" x2="52" y2="52" stroke="white" strokeWidth="6" strokeLinecap="round"/>
+              <text x="28" y="34" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="18" fill="white">A</text>
+            </svg>
+          </span>
+          <p className="text-sm font-medium uppercase tracking-[0.14em] text-teal">
 
-          Accessibility auditor
+            Accessibility auditor
 
-        </p>
+          </p>
+        </div>
 
         <h1 className="mt-2 font-display text-4xl font-bold leading-tight text-teal-deep sm:text-5xl">
 
